@@ -1,0 +1,19 @@
+#directory stuff
+setwd("C:/Users/iokee/Desktop")
+#NOTE THE SLASHES ARE BACKWARDS FROM OS 
+mtcars_loc <- "C:/Users/iokee/Documents/R/win-library/4.0/readr/extdata/mtcars.csv"
+#opens file browser
+car_data_1 = read.csv(choose.files())
+#just imports
+car_data_2 = read.csv(mtcars_loc)
+
+#Exporting (need package to write xlsx)
+write.xlsx(car_data_2, file="Matrix_random.xlsx")
+write.csv(car_data_2, file="Matrix_random.csv", row.names=FALSE)
+write.table(car_data_2, file="Matrix_random", sep=",")
+
+str(mtcars)
+#first 20 entries. If you don't include 2nd arg, it gives 6
+head(mtcars, 20)
+#same
+tail(mtcars, 1)
