@@ -1,0 +1,25 @@
+#Statistical functions
+library(ggplot2)
+x = diamonds
+x
+#$ to access property by name
+mean(x$depth)
+# to access 2nd column
+mean(x[[7]])
+
+median(x$depth)
+max(x$depth)
+#min / max
+range(x$depth)
+#standard deviation
+sd(x$depth)
+#correlation
+cor(x$depth)
+#quantile
+quantile(x$depth)
+#summary. output:
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#  43.00   61.00   61.80   61.75   62.50   79.00 
+summary(x$depth)
+rnorm(1000)
+

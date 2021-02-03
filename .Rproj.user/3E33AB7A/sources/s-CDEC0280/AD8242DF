@@ -1,0 +1,24 @@
+{
+    "id": "AD8242DF",
+    "path": "~/R/TEA_Covid/tea_reports.R",
+    "project_path": "tea_reports.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1612293991484.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "cursorPosition": "40,37",
+        "scrollLine": "10"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1612374323,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1612374587988,
+    "read_only": false,
+    "read_only_alternatives": []
+}

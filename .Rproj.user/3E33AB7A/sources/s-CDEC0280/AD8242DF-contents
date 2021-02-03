@@ -22,7 +22,20 @@ district_percentages <- cleaned_data %>%
 #   scale_fill_brewer(palette="Paired")+
 #   theme_minimal()
 
-#get percentage of students of crisis code
+# get percentage of students of crisis code
 
 # a report of who has high percentage of non-contacted and non-engaged
 # a report of who is losing contact/engagement
+
+# 7A - ENGAGED FOR MAJORITY OF TIME PERIOD
+# 7B - NO CONTACT FOR ENTIRE TIME PERIOD
+# 7C - NO CONTACT BEFORE 5/1; CONTACT 5/1 OR AFTER BUT NOT ENGAGED THRU END OF YR
+# 7D - NO CONTACT BEFORE 5/1; CONTACT 5/1 OR AFTER AND ENGAGED THRU END OF YR
+# 7E - CONTACT BUT NOT ENGAGED FOR MAJORITY OF TIME PERIOD
+# 7F - CONTACT BUT NOT ENGAGED BEFORE 5/1; NO CONTACT 5/1 OR AFTER
+# 7G - CONTACT BUT NOT ENGAGED BEFORE 5/1; ENGAGED 5/1 OR AFTER THRU END OF YR
+# 7H - ENGAGED BEFORE 5/1; NO CONTACT 5/1 THRU END OF YR
+# 7I - ENGAGED BEFORE 5/1; NOT ENGAGED 5/1 THRU END OF YR
+
+# Contact / Engagement Failures
+# Regressions - list('7F', '7H', '7I')
