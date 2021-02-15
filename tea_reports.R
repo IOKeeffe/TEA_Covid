@@ -23,6 +23,11 @@ cleaned_data <- tea_data %>%
   filter(STUDENT.COUNT != -999) %>%
   filter(DISTRICT %in% large_districts)
 
+houston <- tea_data %>%
+  filter(DISTRICT.NAME == "HOUSTON ISD") %>%
+  transform(STUDENT.COUNT = as.numeric(gsub(",","",STUDENT.COUNT))) %>%
+  mutate(Percent = (STUDENT.COUNT/sum(STUDENT.COUNT) * 100))
+
 district_percentages <- cleaned_data %>%
   group_by(DISTRICT) %>%
   arrange(sum(STUDENT.COUNT)) %>%
