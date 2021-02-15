@@ -1,0 +1,32 @@
+{
+    "id": "5599E79A",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1613417541573.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "expression": "scored_districts",
+        "caption": "scored_districts",
+        "totalObservations": 154,
+        "displayedObservations": 154,
+        "variables": 6,
+        "cacheKey": "B043439A",
+        "object": "scored_districts",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=scored_districts&cache_key=B043439A&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7358945710528946547,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1613417541573,
+    "read_only": false,
+    "read_only_alternatives": []
+}
