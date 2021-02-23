@@ -1,0 +1,32 @@
+{
+    "id": "AB7E493E",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1614099580464.0,
+    "source_on_save": false,
+    "relative_order": 8,
+    "properties": {
+        "expression": "individual_districts",
+        "caption": "individual_districts",
+        "totalObservations": "20",
+        "displayedObservations": "20",
+        "variables": "5",
+        "cacheKey": "7122F711",
+        "object": "individual_districts",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=individual_districts&cache_key=7122F711&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7594299790749688937,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1614099580464,
+    "read_only": false,
+    "read_only_alternatives": []
+}

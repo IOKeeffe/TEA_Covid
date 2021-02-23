@@ -12,13 +12,13 @@
     "properties": {
         "expression": "district_percentages",
         "caption": "district_percentages",
-        "totalObservations": "95",
-        "displayedObservations": "95",
-        "variables": "3",
-        "cacheKey": "798FC1EF",
+        "totalObservations": "154",
+        "displayedObservations": "154",
+        "variables": "7",
+        "cacheKey": "3990668E",
         "object": "district_percentages",
         "environment": "",
-        "contentUrl": "grid_resource/gridviewer.html?env=&obj=district_percentages&cache_key=798FC1EF&max_cols=50",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=district_percentages&cache_key=3990668E&max_cols=50",
         "preview": "0"
     },
     "folds": "",
