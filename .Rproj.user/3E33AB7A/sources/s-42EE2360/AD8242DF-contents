@@ -67,10 +67,10 @@ statewide_error_counts <- statewide_crisis_data %>%
 
 esc_error_counts <- merge(region_enrollment_data, esc_enrollment_data, by="REGION") %>%
   group_by(REGION) %>%
+  mutate(region_errors = sum(STUDENT.COUNT == -999)) %>%
   mutate(total_crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
   group_by(CRISIS.CODE) %>%
   mutate(crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
-  mutate(region_errors = sum(STUDENT.COUNT == -999)) %>%
   mutate(undercounted_crisis_students = subtraction_filter(region_enrollment, total_crisis_students)) %>%
   summarize(
     REGION,
