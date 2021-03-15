@@ -12,14 +12,14 @@
     "properties": {
         "expression": "statewide_crisis_counts",
         "caption": "statewide_crisis_counts",
-        "totalObservations": 9,
-        "displayedObservations": 9,
-        "variables": 9,
-        "cacheKey": "DE244089",
+        "totalObservations": "9",
+        "displayedObservations": "9",
+        "variables": "9",
+        "cacheKey": "2230F011",
         "object": "statewide_crisis_counts",
         "environment": "",
-        "contentUrl": "grid_resource/gridviewer.html?env=&obj=statewide_crisis_counts&cache_key=DE244089&max_cols=50",
-        "preview": 0
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=statewide_crisis_counts&cache_key=2230F011&max_cols=50",
+        "preview": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 1526056308112,
