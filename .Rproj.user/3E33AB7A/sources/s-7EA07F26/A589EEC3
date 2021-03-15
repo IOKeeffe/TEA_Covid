@@ -1,0 +1,32 @@
+{
+    "id": "A589EEC3",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1615825573308.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "statewide_crisis_counts",
+        "caption": "statewide_crisis_counts",
+        "totalObservations": 9,
+        "displayedObservations": 9,
+        "variables": 9,
+        "cacheKey": "DE244089",
+        "object": "statewide_crisis_counts",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=statewide_crisis_counts&cache_key=DE244089&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1526056308112,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1615825573308,
+    "read_only": false,
+    "read_only_alternatives": []
+}
