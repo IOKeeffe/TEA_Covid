@@ -1,0 +1,32 @@
+{
+    "id": "648C4FE0",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1615838658260.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "expression": "statewide_crisis_summary",
+        "caption": "statewide_crisis_summary",
+        "totalObservations": "9",
+        "displayedObservations": "9",
+        "variables": "10",
+        "cacheKey": "CC00AD4D",
+        "object": "statewide_crisis_summary",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=statewide_crisis_summary&cache_key=CC00AD4D&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1615838595,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1615838658260,
+    "read_only": false,
+    "read_only_alternatives": []
+}

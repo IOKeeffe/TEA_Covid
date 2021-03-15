@@ -1,10 +1,17 @@
 library(tidyverse)
 library(ggplot2)
-crisis_data <- read.csv("artf354001_Part2_District_Crisis.csv")
+crisis_codes <- c("7A", "7B", "7C", "7D", "7E", "7F", "7G", "7H", "7I")
+raw_crisis_data <- read.csv("artf354001_Part2_District_Crisis.csv")
+completed_crisis_data = raw_crisis_data %>%
+  complete(DISTRICT, nesting(CRISIS.CODE, CRISIS.CODEX), fill=list(STUDENT.COUNT = -999)) %>%
+  fill(DISTRICT.NAME) %>%
+  select(-c(YEAR))
 esc_region_data <- read.csv("DREF.csv")
-esc_crisis_data <- merge(crisis_data, esc_region_data, by="DISTRICT")
+esc_crisis_data <- merge(completed_crisis_data, esc_region_data, by="DISTRICT")
 raw_enrollment_data <- read.csv("Enrollment Report_Statewide_Districts_Gender_2019-2020.csv") 
 large_district_codes <- list(246909, 61902, 43910, 101917, 101915, 57909, 71902, 220901, 60902, 43905, 101902, 15910, 79907, 220905, 101914, 227901, 101907, 57905, 244905, 101912)
+
+
 
 find_extremes <- function(code) {
   return(district_percentages %>%
@@ -21,7 +28,9 @@ district_enrollment_data <- raw_enrollment_data %>%
   group_by(DISTRICT) %>%
   summarize(ENROLLMENT = sum(ENROLLMENT))
 
-total_enrollment = sum(district_enrollment_data$ENROLLMENT)
+statewide_total_enrollment = sum(district_enrollment_data$ENROLLMENT)
+statewide_total_errors = nrow(subset(esc_crisis_data, STUDENT.COUNT==-999))
+statewide_total_entries = nrow(esc_crisis_data)
 
 esc_enrollment_data <- merge(esc_crisis_data, district_enrollment_data, by="DISTRICT") %>%
   transform(STUDENT.COUNT = as.numeric(gsub(",","",STUDENT.COUNT)))
@@ -32,39 +41,44 @@ region_enrollment_data = merge(esc_region_data, district_enrollment_data, by="DI
   summarize(REGION, region_enrollment, .groups="keep") %>%
   distinct()
 
-statewide_crisis_data <- merge(crisis_data, district_enrollment_data, by="DISTRICT") %>%
+statewide_crisis_data <- merge(completed_crisis_data, district_enrollment_data, by="DISTRICT") %>%
   transform(STUDENT.COUNT = as.numeric(gsub(",","",STUDENT.COUNT)))
 
-cleaned_data <- statewide_crisis_data  %>%
-  filter(STUDENT.COUNT != -999)
+temp = completed_crisis_data %>%
+  arrange(STUDENT.COUNT)
 
-large_districts <- cleaned_data %>%
+large_districts <- statewide_crisis_data %>%
   filter(DISTRICT %in% large_district_codes)
 
-large_district_percentages <- large_districts %>%
+large_district_data <- large_districts %>%
   group_by(DISTRICT) %>%
-  arrange(sum(STUDENT.COUNT)) %>%
-  mutate(percent = round(STUDENT.COUNT/sum(STUDENT.COUNT) * 100, digits=2)) %>%
-  summarize(DISTRICT.NAME, CRISIS.CODEX, CRISIS.CODE, STUDENT.COUNT, percent)
+  mutate(total_crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
+  group_by(DISTRICT, CRISIS.CODE) %>%
+  mutate(crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
+  mutate(crisis_percentage = round(crisis_students/ENROLLMENT * 100, digits=2)) %>%
+  mutate(undercounted_crisis_students = subtraction_filter(ENROLLMENT, total_crisis_students)) %>%
+  summarize(DISTRICT.NAME, CRISIS.CODE, ENROLLMENT, total_crisis_students, crisis_students, crisis_percentage, undercounted_crisis_students)
 
-statewide_crisis_counts <- statewide_crisis_data %>%
+statewide_crisis_summary <- statewide_crisis_data %>%
   mutate(total_crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
   group_by(CRISIS.CODE) %>%
   mutate(crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
-  mutate(crisis_percentage = round(crisis_students/total_enrollment * 100, digits=2)) %>%
+  mutate(crisis_percentage = round(crisis_students/statewide_total_enrollment * 100, digits=2)) %>%
   mutate(errors = sum(STUDENT.COUNT == -999)) %>%
-  mutate(undercounted_crisis_students = subtraction_filter(total_enrollment, total_crisis_students)) %>%
-  mutate(undercounted_percentage = round(undercounted_crisis_students/total_enrollment * 100, digits=2)) %>%
+  mutate(error_percentage = round(statewide_total_errors / statewide_total_entries * 100, digits=2)) %>%
+  mutate(undercounted_crisis_students = subtraction_filter(statewide_total_enrollment, total_crisis_students)) %>%
+  mutate(undercounted_percentage = round(undercounted_crisis_students/statewide_total_enrollment * 100, digits=2)) %>%
   summarize(
     crisis_students,
     crisis_percentage,
-    total_enrollment,
+    statewide_total_enrollment,
     total_crisis_students,
     CRISIS.CODE,
     CRISIS.CODEX,
     undercounted_crisis_students,
     undercounted_percentage,
-    errors) %>%
+    errors,
+    error_percentage) %>%
   distinct()
 
 esc_crisis_counts <- merge(region_enrollment_data, esc_enrollment_data, by="REGION") %>%
@@ -76,6 +90,7 @@ esc_crisis_counts <- merge(region_enrollment_data, esc_enrollment_data, by="REGI
   group_by(REGION, CRISIS.CODE) %>%
   mutate(crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
   mutate(crisis_percentage = round(crisis_students/region_enrollment * 100, digits=2))
+
 
 # crisis_students is total students counted in data, enrollment is official numbers.
 esc_crisis_display <- esc_crisis_counts %>%
@@ -90,7 +105,7 @@ esc_crisis_display <- esc_crisis_counts %>%
 # error_percentage is how many errors (missing crisis code or -999 data) an esc region has compared to total possible reporting
 # crisis_grade is a score based on how many students are engaged out of max possible.
 # undercounted compares crisis reported students vs. official enrollment number
-esc_region_specifics <- esc_crisis_counts %>%
+esc_region_summary <- esc_crisis_counts %>%
   group_by(REGION) %>%
   mutate(total_districts = sum(region_districts)) %>%
   mutate(CRISIS.SCORE = case_when(
@@ -102,11 +117,12 @@ esc_region_specifics <- esc_crisis_counts %>%
   mutate(total_crisis_score = sum(CRISIS.SCORE)) %>%
   mutate(max_crisis_score = sum(crisis_students) * 4) %>%
   mutate(crisis_grade = round(total_crisis_score / max_crisis_score * 100, digits=2)) %>%
-  mutate(region_error_percentage = round(region_errors/region_enrollment * 100, digits=2)) %>%
+  mutate(region_error_percentage = round((region_errors/(region_districts * 9)) * 100, digits=2)) %>%
   mutate(undercounted_percentage = round(undercounted_crisis_students/region_enrollment * 100, digits=2)) %>%
   mutate(error_percentage = round(region_errors / region_districts * 9, digits=2)) %>%
   summarize(
     REGION,
+    region_districts,
     region_enrollment,
     total_region_crisis_count,
     undercounted_percentage,
