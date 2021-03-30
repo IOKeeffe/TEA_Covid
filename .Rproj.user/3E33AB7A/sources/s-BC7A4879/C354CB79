@@ -12,14 +12,14 @@
     "properties": {
         "expression": "large_district_data",
         "caption": "large_district_data",
-        "totalObservations": 180,
-        "displayedObservations": 180,
-        "variables": 8,
-        "cacheKey": "47554B2C",
+        "totalObservations": "171",
+        "displayedObservations": "171",
+        "variables": "9",
+        "cacheKey": "0878ED1C",
         "object": "large_district_data",
         "environment": "",
-        "contentUrl": "grid_resource/gridviewer.html?env=&obj=large_district_data&cache_key=47554B2C&max_cols=50",
-        "preview": 0
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=large_district_data&cache_key=0878ED1C&max_cols=50",
+        "preview": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 7163382526787544159,

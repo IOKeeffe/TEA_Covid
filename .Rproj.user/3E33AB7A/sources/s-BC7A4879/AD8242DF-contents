@@ -50,20 +50,25 @@ large_districts <- statewide_crisis_data %>%
 large_district_data <- large_districts %>%
   group_by(DISTRICT) %>%
   mutate(errors = sum(STUDENT.COUNT == -999)) %>%
+  mutate(error_percentage = round(errors/9 * 100, digits=2 )) %>%
   mutate(total_crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
   group_by(DISTRICT, CRISIS.CODE) %>%
   mutate(crisis_students = sum(STUDENT.COUNT[STUDENT.COUNT != -999])) %>%
   mutate(crisis_percentage = round(crisis_students/ENROLLMENT * 100, digits=2)) %>%
-  mutate(undercounted_crisis_students = subtraction_filter(ENROLLMENT, total_crisis_students)) %>%
+  mutate(undercounted_crisis_students = ENROLLMENT - total_crisis_students) %>%
+  mutate(undercounted_percentage = round(undercounted_crisis_students/ENROLLMENT * 100, digits=2)) %>%
   summarize(
     DISTRICT.NAME,
     CRISIS.CODE,
     ENROLLMENT,
     errors,
+    error_percentage,
     total_crisis_students,
     crisis_students,
     crisis_percentage,
-    undercounted_crisis_students)
+    undercounted_crisis_students,
+    undercounted_percentage,
+    )
 
 # A comparison of statewide crisis code info
 statewide_crisis_summary <- statewide_crisis_data %>%
