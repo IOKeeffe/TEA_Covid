@@ -1,0 +1,32 @@
+{
+    "id": "1F55C1B7",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1617055918263.0,
+    "source_on_save": false,
+    "relative_order": 11,
+    "properties": {
+        "expression": "large_districts",
+        "caption": "large_districts",
+        "totalObservations": 171,
+        "displayedObservations": 171,
+        "variables": 6,
+        "cacheKey": "FED3D08B",
+        "object": "large_districts",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=large_districts&cache_key=FED3D08B&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7954801838394602356,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1617055918263,
+    "read_only": false,
+    "read_only_alternatives": []
+}

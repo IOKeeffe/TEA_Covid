@@ -8,7 +8,7 @@
     "dirty": false,
     "created": 1615838658260.0,
     "source_on_save": false,
-    "relative_order": 2,
+    "relative_order": 4,
     "properties": {
         "expression": "statewide_crisis_summary",
         "caption": "statewide_crisis_summary",
