@@ -1,0 +1,32 @@
+{
+    "id": "F014D734",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1617723647017.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "esc_region_summary",
+        "caption": "esc_region_summary",
+        "totalObservations": "20",
+        "displayedObservations": "20",
+        "variables": "8",
+        "cacheKey": "98E0479E",
+        "object": "esc_region_summary",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=esc_region_summary&cache_key=98E0479E&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7358945710528946547,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1617723647017,
+    "read_only": false,
+    "read_only_alternatives": []
+}
